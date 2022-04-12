@@ -89,11 +89,11 @@ const Product = () => {
                 <Image src="https://www.libris.ro/img/pozeprod/59/1002/F/10882982.jpg"/>
             </ImgContainer>
         <InfoContainer>
-            <Title>Fratii Karamazov</Title>
-            <Desc>Description: Best book of the 19th century</Desc>
-            <Author>Author: Fyodor Dostoevsky</Author>
-            <Publisher>Publisher: Nemira</Publisher>
-            <Price>10$</Price>
+            <Title><b>Title:</b> Fratii Karamazov</Title>
+            <Desc><b>Description:</b> Best book of the 19th century</Desc>
+            <Author><b>Author:</b>Fyodor Dostoevsky</Author>
+            <Publisher><b>Publisher:</b> Nemira</Publisher>
+            <Price><b>Price:</b> 5$</Price>
             <AddContainer>
             <AmountContainer>
                 <Remove/>
