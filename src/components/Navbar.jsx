@@ -2,6 +2,7 @@ import { Search, ShoppingCartOutlined } from '@material-ui/icons'
 import React from 'react'
 import styledComponents from 'styled-components'
 import Badge from '@material-ui/core/Badge'
+import { Link } from 'react-router-dom'
 const Container = styledComponents.div`
     height: 60px;
 `
@@ -47,11 +48,12 @@ const Logo = styledComponents.h1`
 font-weight: bold;
 `
 
-const MenuItem = styledComponents.div`
+const MenuItem = styledComponents.button`
 font-size: 14px;
 cursor : pointer;
 margin-left: 25px;
 `
+
 
 const Navbar = () => {
   return (
@@ -70,8 +72,12 @@ const Navbar = () => {
                 </Logo>
             </Center>
             <Right>
-                <MenuItem>REGISTER</MenuItem>
-                <MenuItem>SIGN IN</MenuItem>
+                <MenuItem>
+                    <Link to="/register">REGISTER</Link>
+                </MenuItem>
+                <MenuItem>
+                    <Link to="/login">SIGN IN</Link>
+                </MenuItem>
                 <MenuItem>
                     <Badge badgeContent={4} color="primary">
                         <ShoppingCartOutlined/>
@@ -84,3 +90,4 @@ const Navbar = () => {
 }
 
 export default Navbar
+
