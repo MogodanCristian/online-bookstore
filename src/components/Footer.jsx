@@ -1,9 +1,12 @@
 import { Facebook, Instagram, MailOutline, Phone, Pinterest, Room, Twitter } from '@material-ui/icons'
 import React from 'react'
+import { Link } from 'react-router-dom'
 import styledComponents from 'styled-components'
+import { mobile } from "../responsive";
 
 const Container = styledComponents.div`
     display: flex;
+    ${mobile({ flexDirection: "column" })}
 `
 
 const Left = styledComponents.div`
@@ -38,6 +41,7 @@ const SocialIcon = styledComponents.div`
 const Center = styledComponents.div`
     flex: 1;
     padding: 20px;
+    ${mobile({ display: "none" })}
 `
 
 const Title = styledComponents.h3`
@@ -60,6 +64,7 @@ const ListItem = styledComponents.li`
 const Right = styledComponents.div`
     flex: 1;
     padding: 20px;
+    ${mobile({ backgroundColor: "#fff8f8" })}
 `
 
 const ContactItem = styledComponents.div`
@@ -94,8 +99,12 @@ const Footer = () => {
         <Center>
             <Title>Useful Links</Title>
             <List>
-                <ListItem>Home</ListItem>
-                <ListItem>Cart</ListItem>
+                <ListItem>
+                    <Link to="/" style={{ textDecoration: 'none', color: 'white' }}>Home</Link>
+                </ListItem>
+                <ListItem>
+                    <Link to="/cart" style={{ textDecoration: 'none', color: 'white' }}>Cart</Link>
+                </ListItem>
                 <ListItem>My account</ListItem>
                 <ListItem>Wishlist</ListItem>
                 <ListItem>Terms and conditions</ListItem>

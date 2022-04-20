@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import styledComponents from 'styled-components'
 
 const Container = styledComponents.div`
@@ -38,7 +39,9 @@ const CategoryItem = ({item}) => {
     <Container>
         <Info>
             <Title>{item.title}</Title>
-            <Button>SHOP NOW</Button>
+            <Button>
+                <Link to="/products/categories" style={{ textDecoration: 'none', color: 'white' }}>SHOP NOW</Link>
+            </Button>
         </Info>
     </Container>
   )

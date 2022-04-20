@@ -1,5 +1,6 @@
 import { FavoriteBorderOutlined, SearchOutlined, ShoppingCartOutlined } from '@material-ui/icons'
 import React from 'react'
+import { Link } from 'react-router-dom'
 import styledComponents from 'styled-components'
 
 const Info= styledComponents.div`
@@ -70,10 +71,14 @@ const Product = ({item}) => {
         <Image src={item.img}/>
         <Info>
             <Icon>
-                <ShoppingCartOutlined/>
+                <a href='/cart' style={{color:"white"}}>
+                    <ShoppingCartOutlined/>
+                </a>
             </Icon>
             <Icon>
-                <SearchOutlined/>
+                <a href='/products/product' style={{color:"white"}}>
+                    <SearchOutlined/>
+                </a>
             </Icon>
             <Icon>
                 <FavoriteBorderOutlined/>

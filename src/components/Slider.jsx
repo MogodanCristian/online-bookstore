@@ -3,6 +3,8 @@ import styledComponents from "styled-components"
 import {sliderItems} from "../data"
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { mobile } from "../responsive";
+
 const Container = styledComponents.div`
 width: 100%;
 height: 100vh;
@@ -10,6 +12,7 @@ display: flex;
 background-color: teal;
 position: relative;
 overflow: hidden;
+${mobile({ display: "none" })}
 `
 
 const Arrow = styledComponents.div`
@@ -103,7 +106,7 @@ const Slider = () => {
                 <Title>{item.title}</Title>
                 <Description>{item.desc}</Description>
                 <Button>
-                    <Link to="/cart">SHOP NOW</Link>
+                    <Link to="/products/categories" style={{ textDecoration: 'none', color: 'white' }}>SHOP NOW</Link>
                 </Button>
             </InfoContainer>
           </Slide>

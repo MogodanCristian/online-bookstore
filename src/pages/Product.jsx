@@ -5,6 +5,8 @@ import Navbar from "../components/Navbar"
 import Announcement from "../components/Announcement"
 import Newsletter from "../components/Newsletter"
 import { Add, Remove } from "@material-ui/icons"
+import { Link } from "react-router-dom"
+import { mobile } from "../responsive";
 
 const Container = styledComponents.div`
 
@@ -13,6 +15,7 @@ const Container = styledComponents.div`
 const Wrapper = styledComponents.div`
     padding: 50px;
     display: flex;
+    ${mobile({ padding: "10px", flexDirection:"column" })}
 `
 
 const ImgContainer = styledComponents.div`
@@ -22,10 +25,12 @@ const Image = styledComponents.img`
     width: 100%;
     height: 90vh;
     object-fit: cover;
+    ${mobile({ height: "40vh" })}
     `
 const InfoContainer = styledComponents.div`
     flex: 1;
     padding: 0px 50px;
+    ${mobile({ padding: "10px" })}
 `
 const Title = styledComponents.h1`
     font-weight: 200;
@@ -52,6 +57,7 @@ const AddContainer = styledComponents.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
+    ${mobile({ width: "100%" })}
 `
 const AmountContainer = styledComponents.div`
     display: flex;
@@ -100,7 +106,9 @@ const Product = () => {
                 <Amount>1</Amount>
                 <Add/>
             </AmountContainer>
-            <Button>ADD TO CART</Button>
+            <Button>
+                <Link to="/cart" style={{ textDecoration: 'none', color: 'white' }}>ADD TO CART</Link>
+            </Button>
         </AddContainer>
         </InfoContainer>
         </Wrapper>
