@@ -6,6 +6,8 @@ import Newsletter from "../components/Newsletter"
 import { mobile } from "../responsive";
 
 import Navbar from "../components/Navbar"
+import { useLocation } from "react-router-dom"
+import { useState } from "react"
 
 const Container = styledComponents.div`
 `
@@ -35,22 +37,26 @@ const Option = styledComponents.option`
 `
 
 const ProductList = () => {
+  const location = useLocation();
+  
+  const cat = location.pathname.split("/")[2];
+  const [sort, setSort] = useState("newest");
   return (
     <Container>
         <Navbar/>
         <Announcement/>
-        <Title>Carti in limba engleza</Title>
+        <Title>{(cat.charAt(0).toUpperCase() + cat.slice(1)).replace("_"," ")}</Title>
         <FilterContainer>
             <Filter>
                 <FilterText>Sort Products:</FilterText>
-                <Select>
-                    <Option selected>Newest</Option>
-                    <Option>Price (asc)</Option>
-                    <Option>Price (desc)</Option>
+                <Select onChange={(e)=>setSort(e.target.value)}>
+                    <Option value="newest">Newest</Option>
+                    <Option value="asc">Price (asc)</Option>
+                    <Option value="desc">Price (desc)</Option>
                 </Select>
             </Filter>
         </FilterContainer>
-        <Products/>
+        <Products cat={cat} sort={sort}/>
         <Newsletter/>
         <Footer/>
     </Container>

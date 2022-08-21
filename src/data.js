@@ -5,6 +5,7 @@ export const sliderItems = [
         title: "Fratii Karamazov",
         desc: "Best book of the 19th century",
         bg: "f5fafd",
+        cat: "philosophy"
     },
     {
         id: 2,
@@ -12,6 +13,7 @@ export const sliderItems = [
         title: "Fratii Karamazov vol 2",
         desc: "Best book of the 19th century",
         bg: "fcf1ed",
+        cat: "philosophy"
     },
     {
         id: 3,
@@ -19,21 +21,25 @@ export const sliderItems = [
         title: "Fratii Karamazov",
         desc: "Best book of the 19th century",
         bg: "fcf1ed",
+        cat: "philosophy"
     }
 ]
 
 export const categories = [
     {
         id: 1,
-        title: "Carti in engleza"
+        title: "Carti de filosofie",
+        cat: "philosophy"
     },
     {
         id: 2,
-        title: "Carti de dezvoltare personala"
+        title: "Carti de dezvoltare personala",
+        cat:"personal_development"
     },
     {
         id: 3,
-        title: "Carti de joc"
+        title: "Carti pentru copii",
+        cat:"kids"
     }
 ]
 

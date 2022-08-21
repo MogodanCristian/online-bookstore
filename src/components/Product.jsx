@@ -25,6 +25,7 @@ const Container =styledComponents.div`
     min-width: 280px;
     height: 350px;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     background-color: #f5fbfd;
@@ -62,7 +63,11 @@ const Icon= styledComponents.div`
         transform: scale(1.1);
     }
 `
-
+const Text= styledComponents.span`
+    font-weight: 100;
+    font-size: 40px;
+    margin-top: 40px;
+`
 
 const Product = ({item}) => {
   return (
@@ -71,20 +76,22 @@ const Product = ({item}) => {
         <Image src={item.img}/>
         <Info>
             <Icon>
-                <a href='/cart' style={{color:"white"}}>
+            <Link to={'/cart'}>
                     <ShoppingCartOutlined/>
-                </a>
+                </Link>
             </Icon>
             <Icon>
-                <a href='/products/product' style={{color:"white"}}>
+                <Link to={`/product/${item._id}`}>
                     <SearchOutlined/>
-                </a>
+                </Link>
             </Icon>
             <Icon>
                 <FavoriteBorderOutlined/>
             </Icon>
         </Info>
+        <Text>{item.price} Lei</Text>
     </Container>
+    
   )
 }
 

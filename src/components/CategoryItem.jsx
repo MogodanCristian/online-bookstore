@@ -40,7 +40,7 @@ const CategoryItem = ({item}) => {
         <Info>
             <Title>{item.title}</Title>
             <Button>
-                <Link to="/products/categories" style={{ textDecoration: 'none', color: 'white' }}>SHOP NOW</Link>
+                <Link to={`/products/${item.cat}`} style={{ textDecoration: 'none', color: 'white' }}>SHOP NOW</Link>
             </Button>
         </Info>
     </Container>

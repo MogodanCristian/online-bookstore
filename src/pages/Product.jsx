@@ -5,8 +5,11 @@ import Navbar from "../components/Navbar"
 import Announcement from "../components/Announcement"
 import Newsletter from "../components/Newsletter"
 import { Add, Remove } from "@material-ui/icons"
-import { Link } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 import { mobile } from "../responsive";
+import { useEffect } from "react"
+import { useState } from "react"
+import { publicRequest } from "../requestMethods"
 
 const Container = styledComponents.div`
 
@@ -86,25 +89,50 @@ const Button = styledComponents.button`
 `
 
 const Product = () => {
+    const location = useLocation();
+    const id = location.pathname.split("/")[2];
+    const [product, setProduct] = useState({});
+  const [quantity, setQuantity] = useState(1);
+  const [color, setColor] = useState("");
+  const [size, setSize] = useState("");
+
+  useEffect(() => {
+    const getProduct = async () => {
+      try {
+        const res = await publicRequest.get("/products/find/" + id);
+        setProduct(res.data);
+      } catch {}
+    };
+    getProduct();
+  }, [id]);
+
+  const handleQuantity = (type) => {
+    if (type === "dec") {
+      quantity > 1 && setQuantity(quantity - 1);
+    } else {
+      setQuantity(quantity + 1);
+    }
+  };
+
   return (
     <Container>
         <Navbar/>
         <Announcement/>
         <Wrapper>
             <ImgContainer>
-                <Image src="https://www.libris.ro/img/pozeprod/59/1002/F/10882982.jpg"/>
+                <Image src={product.img}/>
             </ImgContainer>
         <InfoContainer>
-            <Title><b>Title:</b> Fratii Karamazov</Title>
-            <Desc><b>Description:</b> Best book of the 19th century</Desc>
-            <Author><b>Author:</b>Fyodor Dostoevsky</Author>
-            <Publisher><b>Publisher:</b> Nemira</Publisher>
-            <Price><b>Price:</b> 5$</Price>
+            <Title><b>Title:</b> {product.title}</Title>
+            <Desc><b>Description:</b> {product.desc}</Desc>
+            <Author><b>Author:</b>{product.author}</Author>
+            <Publisher><b>Publisher:</b> {product.publisher}</Publisher>
+            <Price><b>Price:</b> {product.price}Lei</Price>
             <AddContainer>
             <AmountContainer>
-                <Remove/>
-                <Amount>1</Amount>
-                <Add/>
+                <Remove onClick={() => handleQuantity("dec")} />
+                    <Amount>{quantity}</Amount>
+                <Add onClick={() => handleQuantity("inc")} />
             </AmountContainer>
             <Button>
                 <Link to="/cart" style={{ textDecoration: 'none', color: 'white' }}>ADD TO CART</Link>

@@ -14,14 +14,14 @@ import {
 const App = () => {
   return (
      <Router>
-        <Routes>
-            <Route path='/' element={<Home/>} />
-            <Route path='/products/categories' element={<ProductList/>} />
+         <Routes>
+            <Route exact path='/' element={<Home/>} />
+            <Route path='/products/:category' element={<ProductList/>} />
             <Route path='/register' element={<Register/>}/>
             <Route path='/login' element={<Login/>} />
             <Route path='/cart' element={<Cart/>}/>
-            <Route path='/products/product' element={<Product/>}/>
-        </Routes>
+            <Route path='/product/:id' element={<Product/>}/>
+        </Routes> 
      </Router>
   );
 };
